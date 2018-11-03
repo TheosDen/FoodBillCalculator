@@ -21,6 +21,11 @@ class FoodProvider
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="FoodItem", mappedBy="provider")
+     */
+    private $items;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -36,5 +41,13 @@ class FoodProvider
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * @return FoodItem[]
+     */
+    public function getItems()
+    {
+        return $this->items;
     }
 }

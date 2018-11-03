@@ -31,6 +31,11 @@ class FoodItem
      */
     private $weight;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="FoodProvider", inversedBy="items")
+     */
+    private $provider;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -70,5 +75,13 @@ class FoodItem
         $this->weight = $weight;
 
         return $this;
+    }
+
+    /**
+     * @return FoodProvider
+     */
+    public function getProvider(): FoodProvider
+    {
+        return $this->provider;
     }
 }
