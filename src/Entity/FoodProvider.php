@@ -22,7 +22,7 @@ class FoodProvider
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="FoodItem", mappedBy="provider")
+     * @ORM\OneToMany(targetEntity="FoodItem", mappedBy="provider", cascade={"remove"})
      */
     private $items;
 
