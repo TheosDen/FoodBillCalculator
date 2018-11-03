@@ -36,6 +36,12 @@ class FoodItem
      */
     private $provider;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="FoodCategory", inversedBy="items")
+     * @var FoodCategory
+     */
+    private $category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -83,5 +89,33 @@ class FoodItem
     public function getProvider(): FoodProvider
     {
         return $this->provider;
+    }
+
+    /**
+     * @return FoodCategory
+     */
+    public function getCategory(): FoodCategory
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param FoodCategory $category
+     * @return FoodItem
+     */
+    public function setCategory(FoodCategory $category): FoodItem
+    {
+        $this->category = $category;
+        return $this;
+    }
+
+    /**
+     * @param mixed $provider
+     * @return FoodItem
+     */
+    public function setProvider(FoodProvider $provider): FoodItem
+    {
+        $this->provider = $provider;
+        return $this;
     }
 }

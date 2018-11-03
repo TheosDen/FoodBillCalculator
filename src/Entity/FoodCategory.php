@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +22,17 @@ class FoodCategory
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="FoodItem", mappedBy="category")
+     * @var ArrayCollection
+     */
+    private $items;
+
+    public function __construct()
+    {
+        $this->items = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -36,5 +48,13 @@ class FoodCategory
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getItems(): ArrayCollection
+    {
+        return $this->items;
     }
 }
