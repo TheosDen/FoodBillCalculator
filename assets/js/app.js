@@ -1,20 +1,23 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
-
-// any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.scss');
-
-// Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-// var $ = require('jquery');
 
 import React from "react";
 import ReactDOM from "react-dom";
 
+import AppBar from '@material-ui/core/AppBar/AppBar';
+import Toolbar from '@material-ui/core/Toolbar/Toolbar';
+import Typography from '@material-ui/core/Typography/Typography';
+
 ReactDOM.render(
-    <h3>Index Page</h3>,
+    <div>
+        <header>
+            <AppBar position="static" color="default">
+                <Toolbar>
+                    <Typography variant="h6" color="inherit">
+                        Holiday
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+        </header>
+    </div>,
     document.getElementById("app")
 );
