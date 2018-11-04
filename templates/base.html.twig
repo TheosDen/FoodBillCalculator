@@ -8,7 +8,11 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            {% block react %}
+                <div id="app"></div>
+            {% endblock %}
+        {% endblock %}
         {% block javascripts %}
             <script src="{{ asset('build/app.js') }}"></script>
         {% endblock %}

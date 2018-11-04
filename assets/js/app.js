@@ -10,3 +10,11 @@ require('../css/app.scss');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // var $ = require('jquery');
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(
+    <h3>Index Page</h3>,
+    document.getElementById("app")
+);
