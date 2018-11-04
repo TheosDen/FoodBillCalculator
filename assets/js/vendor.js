@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from 'prop-types';
 
-import MaterialCore from '@material-ui/core';
+// import MaterialCore from '@material-ui/core';
 
 // import { withStyles } from '@material-ui/core/styles';
 // import AppBar from '@material-ui/core/AppBar';

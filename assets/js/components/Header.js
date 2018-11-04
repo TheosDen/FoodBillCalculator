@@ -5,16 +5,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge/Badge';
-import Button from '@material-ui/core/Button/Button';
-
-import DeleteIcon from '@material-ui/icons/Delete';
 
 const styles = {
     grow: {
         flexGrow: 1,
-    },
-    totalColor: {
-        color: 'white',
     }
 };
 
