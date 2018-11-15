@@ -12,14 +12,6 @@ const styles = {
     }
 };
 
-const provider = [
-    {
-        "id":4,
-        "name":"Holiday (12-й)",
-        "items":[]
-    }
-];
-
 function Header(props) {
     const { classes } = props;
     return (
@@ -27,11 +19,11 @@ function Header(props) {
             <AppBar position="fixed">
                 <Toolbar>
                     <Typography variant="h6" color="inherit" className={classes.grow}>
-                        Holiday
+                        {props.provider ? props.provider.name : 'Loading...'}
                     </Typography>
-                    <Badge badgeContent={4} color="secondary">
+                    <Badge badgeContent={props.totalCount} color="secondary">
                         <Typography color="inherit">
-                            Total: 123.00
+                            Total: {props.total}
                         </Typography>
                     </Badge>
                 </Toolbar>
@@ -42,6 +34,9 @@ function Header(props) {
 
 Header.propTypes = {
     classes: PropTypes.object.isRequired,
+    provider: PropTypes.object,
+    total: PropTypes.number.isRequired,
+    totalCount: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(Header);
