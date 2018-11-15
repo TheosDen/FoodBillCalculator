@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Header from './Header';
 import Main from './Main';
 
@@ -320,6 +319,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        // TODO: ajax loading
         setTimeout(() => {
             this.setState({
                 provider: provider,
@@ -335,13 +335,10 @@ class App extends React.Component {
         console.log(`app component`);
 
         return <div>
-            <Header provider={this.state.provider} total={this.state.selectedTotal} totalCount={this.state.selectedCount}/>
-            <Main/>
+            <Header provider={this.state.provider} total={this.state.selectedTotal} totalCount={this.state.selectedCount} />
+            <Main categories={this.state.categories} items={this.state.items} />
         </div>;
     }
 }
-
-App.propTypes = {
-};
 
 export default App;
