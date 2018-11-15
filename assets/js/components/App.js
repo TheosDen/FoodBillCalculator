@@ -332,8 +332,6 @@ class App extends React.Component {
     }
 
     render() {
-        console.log(`app component`);
-
         return <div>
             <Header provider={this.state.provider} total={this.state.selectedTotal} totalCount={this.state.selectedCount} />
             <Main categories={this.state.categories} items={this.state.items} />

@@ -10,6 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText/ListItemText';
 import IconButton from '@material-ui/core/IconButton/IconButton';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction/ListItemSecondaryAction';
 import Badge from '@material-ui/core/Badge/Badge';
+import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 
 const styles = theme => ({
     main: {
@@ -18,6 +19,9 @@ const styles = theme => ({
     right: {
         textAlign: 'right',
     },
+    progress: {
+        margin: "0 auto",
+    }
 });
 
 function Main(props) {
@@ -49,9 +53,13 @@ function Main(props) {
 
     return (
         <section className={ classes.main }>
-            <List>
-                {categoryItems}
-            </List>
+            {categoryItems.length > 0 &&
+                <List>
+                    {categoryItems}
+                </List>
+            ||
+                <CircularProgress className={classes.progress} />
+            }
         </section>
     );
 }
