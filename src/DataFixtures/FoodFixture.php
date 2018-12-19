@@ -2,6 +2,9 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\FoodCategory;
+use App\Entity\FoodItem;
+use App\Entity\FoodProvider;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -216,48 +219,38 @@ class FoodFixture extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $categories = $this->loadCategories($manager);
-
-        $provider = new \App\Entity\FoodProvider();
+        $provider = new FoodProvider();
         $provider->setName('Holiday (12-й)');
 
-        foreach (self::ITEMS as $data) {
-            $item = new \App\Entity\FoodItem();
-            $item
-                ->setName($data['name'])
-                ->setPrice($data['price'])
-                ->setWeight($data['weight']);
+        foreach (self::CATEGORIES as $index => $name) {
+            $category = new FoodCategory();
+            $category
+                ->setName($name)
+                ->setProvider($provider);
 
-            $category = $categories[self::CATEGORIES[$data['category_id']]];
-            $item->setCategory($category);
+            foreach (self::ITEMS as $data) {
+                if ($data['category_id'] !== $index) {
+                    continue;
+                }
 
-            $item->setProvider($provider);
+                $item = new FoodItem();
+                $item
+                    ->setName($data['name'])
+                    ->setPrice($data['price'])
+                    ->setWeight($data['weight']);
+
+                $item->setCategory($category);
+
+                $manager->persist($category);
+                $manager->persist($item);
+
+            }
 
             $manager->persist($category);
-            $manager->persist($item);
-
         }
 
         $manager->persist($provider);
 
         $manager->flush();
-    }
-
-    /**
-     * @return \App\Entity\FoodCategory[]
-     */
-    private function loadCategories(ObjectManager $manager): array
-    {
-        $categories = [];
-
-        foreach (self::CATEGORIES as $name) {
-            $category = new \App\Entity\FoodCategory();
-            $category->setName($name);
-            $manager->persist($category);
-
-            $categories[$name] = $category;
-        }
-
-        return $categories;
     }
 }

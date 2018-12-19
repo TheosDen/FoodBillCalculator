@@ -37,12 +37,8 @@ class FoodItem
     private $weight;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FoodProvider", inversedBy="items")
-     */
-    private $provider;
-
-    /**
      * @ORM\ManyToOne(targetEntity="FoodCategory", inversedBy="items")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * @var FoodCategory
      */
     private $category;
@@ -89,14 +85,6 @@ class FoodItem
     }
 
     /**
-     * @return FoodProvider
-     */
-    public function getProvider(): FoodProvider
-    {
-        return $this->provider;
-    }
-
-    /**
      * @return FoodCategory
      */
     public function getCategory(): FoodCategory
@@ -111,16 +99,6 @@ class FoodItem
     public function setCategory(FoodCategory $category): FoodItem
     {
         $this->category = $category;
-        return $this;
-    }
-
-    /**
-     * @param mixed $provider
-     * @return FoodItem
-     */
-    public function setProvider(FoodProvider $provider): FoodItem
-    {
-        $this->provider = $provider;
         return $this;
     }
 }

@@ -27,15 +27,15 @@ class FoodProvider
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="FoodItem", mappedBy="provider", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="FoodCategory", mappedBy="provider", cascade={"remove"})
      * @var Collection
      * @Groups("default")
      */
-    private $items;
+    private $categories;
 
     public function __construct()
     {
-        $this->items = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -58,8 +58,8 @@ class FoodProvider
     /**
      * @return Collection
      */
-    public function getItems()
+    public function getCategories()
     {
-        return $this->items;
+        return $this->categories;
     }
 }

@@ -27,6 +27,12 @@ class FoodCategory
     private $name;
 
     /**
+     * @ORM\ManyToOne(targetEntity="FoodProvider", inversedBy="categories")
+     * @ORM\JoinColumn(name="provider_id", referencedColumnName="id")
+     */
+    private $provider;
+
+    /**
      * @ORM\OneToMany(targetEntity="FoodItem", mappedBy="category")
      * @var ArrayCollection
      * @Groups("default")
@@ -61,5 +67,23 @@ class FoodCategory
     public function getItems(): Collection
     {
         return $this->items;
+    }
+
+    /**
+     * @return FoodProvider
+     */
+    public function getProvider(): FoodProvider
+    {
+        return $this->provider;
+    }
+
+    /**
+     * @param mixed $provider
+     * @return FoodCategory
+     */
+    public function setProvider(FoodProvider $provider): self
+    {
+        $this->provider = $provider;
+        return $this;
     }
 }
