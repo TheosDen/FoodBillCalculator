@@ -23,7 +23,7 @@ class FoodProviderController extends AbstractController
      */
     public function index(FoodProviderRepository $repository): JsonResponse
     {
-        return $this->json($repository->findAll(), Response::HTTP_OK, [], ['attributes' => ['id', 'name']]);
+        return $this->json($repository->findAll(), Response::HTTP_OK, [], ['groups' => ['default']]);
     }
 
     /**

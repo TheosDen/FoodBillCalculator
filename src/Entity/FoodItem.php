@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FoodItemRepository")
@@ -13,21 +14,25 @@ class FoodItem
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("default")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("default")
      */
     private $name;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @Groups("default")
      */
     private $price;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("default")
      */
     private $weight;
 
