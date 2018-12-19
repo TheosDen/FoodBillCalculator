@@ -27,26 +27,28 @@ const styles = theme => ({
 function Main(props) {
     const { classes } = props;
 
-    const listItems = props.items.map((item) =>
-        <ListItem key={item.id} button>
-            <ListItemText primary={item.name} />
-            <ListItemText secondary={item.price} className={classes.right} />
+    const categoryItems = props.categories.map((category) =>
+        <ListItem key={category.id}>
+            <List subheader={<ListSubheader component="div">{category.name}</ListSubheader>}>
+
+                {category.items.map((item) =>
+                    <ListItem key={item.id} button>
+                        <ListItemText primary={item.name} />
+                        <ListItemText secondary={item.price} className={classes.right} />
 
 
-            <ListItemSecondaryAction style={ Math.round(Math.random()) ? { visibility: 'hidden' } : {} }>
-                <IconButton aria-label="Comments">
-                    <Badge badgeContent={1} color="secondary">
-                        <DeleteIcon />
-                    </Badge>
-                </IconButton>
-            </ListItemSecondaryAction>
-        </ListItem>
-    );
+                        <ListItemSecondaryAction style={ Math.round(Math.random()) ? { visibility: 'hidden' } : {} }>
+                            <IconButton aria-label="Comments">
+                                <Badge badgeContent={1} color="secondary">
+                                    <DeleteIcon />
+                                </Badge>
+                            </IconButton>
+                        </ListItemSecondaryAction>
+                    </ListItem>
+                )}
 
-    const categoryItems = props.categories.map((item) =>
-        <ListItem key={item.id}>
-            <List subheader={<ListSubheader component="div">{item.name}</ListSubheader>}>
-                {listItems}
+
+
             </List>
         </ListItem>
     );
@@ -67,7 +69,6 @@ function Main(props) {
 Main.propTypes = {
     classes: PropTypes.object.isRequired,
     categories: PropTypes.array.isRequired,
-    items: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles)(Main);
